@@ -20,16 +20,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.TextField;
+import java.awt.SystemColor;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class VentanaRegistro extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtHola;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtEnterYourEmail;
+	private JTextField txtEnterYourPhone;
+	private JTextField txtEnterYourSurname;
+	private JTextField txtEnterYourName;
 
 	/**
 	 * Launch the application.
@@ -68,8 +72,8 @@ public class VentanaRegistro extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("REGISTRATION FORM");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		lblNewLabel.setBounds(123, 29, 243, 53);
+		lblNewLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 19));
+		lblNewLabel.setBounds(124, 29, 243, 53);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -80,7 +84,7 @@ public class VentanaRegistro extends JFrame {
 		JLabel lblEnterYourPersonal = new JLabel("Enter your personal data");
 		lblEnterYourPersonal.setForeground(Color.BLACK);
 		lblEnterYourPersonal.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
-		lblEnterYourPersonal.setBounds(157, 52, 173, 53);
+		lblEnterYourPersonal.setBounds(149, 51, 173, 53);
 		panel.add(lblEnterYourPersonal);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
@@ -130,15 +134,6 @@ public class VentanaRegistro extends JFrame {
 		lblPhoneNumber.setBounds(59, 441, 124, 30);
 		contentPane.add(lblPhoneNumber);
 		
-		txtHola = new JTextField();
-		txtHola.setToolTipText("hola");
-		txtHola.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
-		txtHola.setForeground(new Color(0, 0, 0));
-		txtHola.setBackground(new Color(255, 128, 0));
-		txtHola.setBounds(59, 161, 164, 30);
-		contentPane.add(txtHola);
-		txtHola.setColumns(10);
-		
 		passwordField = new JPasswordField();
 		passwordField.setBackground(new Color(255, 128, 0));
 		passwordField.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
@@ -151,23 +146,58 @@ public class VentanaRegistro extends JFrame {
 		passwordField_1.setBounds(59, 401, 376, 30);
 		contentPane.add(passwordField_1);
 		
-		textField = new JTextField();
-		textField.setToolTipText("hola");
-		textField.setForeground(Color.BLACK);
-		textField.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
-		textField.setColumns(10);
-		textField.setBackground(new Color(255, 128, 0));
-		textField.setBounds(59, 241, 376, 30);
-		contentPane.add(textField);
+		txtEnterYourEmail = new JTextField();
+		txtEnterYourEmail.setText("Enter Your Email");
+		txtEnterYourEmail.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(txtEnterYourEmail.getText().equals("Enter Your Email")) {
+					txtEnterYourEmail.setText("");
+					txtEnterYourEmail.setForeground(new Color(0,0,0));
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtEnterYourEmail.getText().equals("")) {
+					txtEnterYourEmail.setText("Enter Your Email");
+					txtEnterYourEmail.setForeground(new Color(71,75,78));
+				}
+			}
+		});
+		txtEnterYourEmail.setToolTipText("");
+		txtEnterYourEmail.setForeground(new Color(71, 75, 78));
+		txtEnterYourEmail.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
+		txtEnterYourEmail.setColumns(10);
+		txtEnterYourEmail.setBackground(new Color(255, 128, 0));
+		txtEnterYourEmail.setBounds(59, 241, 376, 30);
+		contentPane.add(txtEnterYourEmail);
 		
-		textField_1 = new JTextField();
-		textField_1.setToolTipText("hola");
-		textField_1.setForeground(Color.BLACK);
-		textField_1.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
-		textField_1.setColumns(10);
-		textField_1.setBackground(new Color(255, 128, 0));
-		textField_1.setBounds(59, 481, 376, 30);
-		contentPane.add(textField_1);
+		txtEnterYourPhone = new JTextField();
+		txtEnterYourPhone.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(txtEnterYourPhone.getText().equals("Enter Your Phone Number")) {
+					txtEnterYourPhone.setText("");
+					txtEnterYourPhone.setForeground(new Color(0,0,0));
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtEnterYourPhone.getText().equals("")) {
+					txtEnterYourPhone.setText("Enter Your Phone Number");
+					txtEnterYourPhone.setForeground(new Color(71, 75, 78));
+				}
+			}
+			
+		});
+		txtEnterYourPhone.setText("Enter Your Phone Number");
+		txtEnterYourPhone.setToolTipText("");
+		txtEnterYourPhone.setForeground(new Color(71, 75, 78));
+		txtEnterYourPhone.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
+		txtEnterYourPhone.setColumns(10);
+		txtEnterYourPhone.setBackground(new Color(255, 128, 0));
+		txtEnterYourPhone.setBounds(59, 481, 376, 30);
+		contentPane.add(txtEnterYourPhone);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Remember Me");
 		rdbtnNewRadioButton.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
@@ -213,10 +243,10 @@ public class VentanaRegistro extends JFrame {
 		btnNewButton.setBounds(184, 635, 118, 30);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblYouAreAlready = new JLabel("You are already signed in?");
+		JLabel lblYouAreAlready = new JLabel("You are already registered?");
 		lblYouAreAlready.setForeground(Color.BLACK);
 		lblYouAreAlready.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
-		lblYouAreAlready.setBounds(144, 675, 176, 30);
+		lblYouAreAlready.setBounds(126, 675, 176, 30);
 		contentPane.add(lblYouAreAlready);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
@@ -232,7 +262,7 @@ public class VentanaRegistro extends JFrame {
 		});
 		btnLogIn.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		btnLogIn.setBackground(new Color(255, 128, 0));
-		btnLogIn.setBounds(306, 682, 83, 23);
+		btnLogIn.setBounds(303, 679, 83, 23);
 		contentPane.add(btnLogIn);
 		
 		JLabel lblSurname = new JLabel("Surname:");
@@ -241,14 +271,31 @@ public class VentanaRegistro extends JFrame {
 		lblSurname.setBounds(238, 121, 93, 30);
 		contentPane.add(lblSurname);
 		
-		textField_2 = new JTextField();
-		textField_2.setToolTipText("hola");
-		textField_2.setForeground(Color.BLACK);
-		textField_2.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
-		textField_2.setColumns(10);
-		textField_2.setBackground(new Color(255, 128, 0));
-		textField_2.setBounds(233, 161, 202, 30);
-		contentPane.add(textField_2);
+		txtEnterYourSurname = new JTextField();
+		txtEnterYourSurname.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(txtEnterYourSurname.getText().equals("Enter Your Surname")) {
+					txtEnterYourSurname.setText("");
+					txtEnterYourSurname.setForeground(new Color(0,0,0));
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtEnterYourSurname.getText().equals("")) {
+					txtEnterYourSurname.setText("Enter Your Surname");
+					txtEnterYourSurname.setForeground(new Color(71,75,78));
+				}
+			}
+		});
+		txtEnterYourSurname.setText("Enter Your Surname");
+		txtEnterYourSurname.setToolTipText("");
+		txtEnterYourSurname.setForeground(new Color(71, 75, 78));
+		txtEnterYourSurname.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
+		txtEnterYourSurname.setColumns(10);
+		txtEnterYourSurname.setBackground(new Color(255, 128, 0));
+		txtEnterYourSurname.setBounds(233, 161, 202, 30);
+		contentPane.add(txtEnterYourSurname);
 		
 		JLabel lblSelectYourCountry = new JLabel("Select your Country:");
 		lblSelectYourCountry.setForeground(Color.BLACK);
@@ -267,6 +314,31 @@ public class VentanaRegistro extends JFrame {
 		lblNewLabel_3_4_1.setIcon(new ImageIcon(VentanaRegistro.class.getResource("/Images/country_30px.png")));
 		lblNewLabel_3_4_1.setBounds(22, 521, 33, 30);
 		contentPane.add(lblNewLabel_3_4_1);
+		
+		txtEnterYourName = new JTextField();
+		txtEnterYourName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(txtEnterYourName.getText().equals("Enter Your Name")) {
+					txtEnterYourName.setText("");
+					txtEnterYourName.setForeground(new Color(0,0,0));
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(txtEnterYourName.getText().equals("")) {
+					txtEnterYourName.setText("Enter Your Name");
+					txtEnterYourName.setForeground(new Color(71,75,78));
+				}
+			}
+		});
+		txtEnterYourName.setForeground(new Color(71, 75, 78));
+		txtEnterYourName.setBackground(new Color(255, 128, 0));
+		txtEnterYourName.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
+		txtEnterYourName.setText("Enter Your Name");
+		txtEnterYourName.setBounds(56, 162, 167, 28);
+		contentPane.add(txtEnterYourName);
+		txtEnterYourName.setColumns(10);
 	}
 }
 
