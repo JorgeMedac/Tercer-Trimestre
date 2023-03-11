@@ -243,7 +243,7 @@ public class VentanaRegistro extends JFrame {
 		btnNewButton.setBounds(184, 635, 118, 30);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblYouAreAlready = new JLabel("You are already registered?");
+		JLabel lblYouAreAlready = new JLabel("Are you already registered?");
 		lblYouAreAlready.setForeground(Color.BLACK);
 		lblYouAreAlready.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		lblYouAreAlready.setBounds(126, 675, 176, 30);
