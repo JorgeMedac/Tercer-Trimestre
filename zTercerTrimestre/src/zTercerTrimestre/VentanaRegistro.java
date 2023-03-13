@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Label;
 import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
@@ -24,6 +26,8 @@ import java.awt.TextField;
 import java.awt.SystemColor;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VentanaRegistro extends JFrame {
 
@@ -34,7 +38,8 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtEnterYourPhone;
 	private JTextField txtEnterYourSurname;
 	private JTextField txtEnterYourName;
-
+	static VentanaRegistro ventana_registro;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,8 +47,8 @@ public class VentanaRegistro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaRegistro frame = new VentanaRegistro();
-					frame.setVisible(true);
+					ventana_registro = new VentanaRegistro();
+					ventana_registro.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -173,6 +178,22 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(txtEnterYourEmail);
 		
 		txtEnterYourPhone = new JTextField();
+		txtEnterYourPhone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int key = e.getKeyChar();
+
+			    boolean numeros = key >= 48 && key <= 57;
+			        
+			    if (!numeros)
+			    {
+			        e.consume();
+			    }
+			    if (txtEnterYourPhone.getText().trim().length() == 9) {
+			        e.consume();
+			    }
+			}
+		});
 		txtEnterYourPhone.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -238,6 +259,11 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblNewLabel_3_2_1);
 		
 		JButton btnNewButton = new JButton("REGISTER");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(contentPane, "¡Registro Completado!","MUNDO ANIME",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnNewButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		btnNewButton.setBackground(new Color(255, 128, 0));
 		btnNewButton.setBounds(184, 635, 118, 30);
@@ -258,6 +284,9 @@ public class VentanaRegistro extends JFrame {
 		btnLogIn.setForeground(new Color(0, 0, 0));
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JFrame frame = new Login();
+				frame.setVisible(true);
+				ventana_registro.setVisible(false);
 			}
 		});
 		btnLogIn.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
@@ -272,6 +301,21 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblSurname);
 		
 		txtEnterYourSurname = new JTextField();
+		txtEnterYourSurname.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int key = e.getKeyChar();
+
+			    boolean mayusculas = key >= 65 && key <= 90;
+			    boolean minusculas = key >= 97 && key <= 122;
+			    boolean espacio = key == 32;
+			            
+			     if (!(minusculas || mayusculas || espacio))
+			    {
+			        e.consume();
+			    }
+			}
+		});
 		txtEnterYourSurname.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -305,7 +349,7 @@ public class VentanaRegistro extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 15));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Spain", "France", "United States", "Mexico", "Germany", "United Kingdom", "Italy"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Your Country", "Spain", "France", "United States", "Mexico", "Germany", "United Kingdom", "Italy"}));
 		comboBox.setBackground(new Color(255, 128, 0));
 		comboBox.setBounds(59, 564, 376, 30);
 		contentPane.add(comboBox);
@@ -316,6 +360,21 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(lblNewLabel_3_4_1);
 		
 		txtEnterYourName = new JTextField();
+		txtEnterYourName.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int key = e.getKeyChar();
+
+			    boolean mayusculas = key >= 65 && key <= 90;
+			    boolean minusculas = key >= 97 && key <= 122;
+			    boolean espacio = key == 32;
+			            
+			     if (!(minusculas || mayusculas || espacio))
+			    {
+			        e.consume();
+			    }
+			}
+		});
 		txtEnterYourName.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
